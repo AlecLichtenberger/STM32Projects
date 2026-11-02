@@ -1,0 +1,18 @@
+# Eclipse / STM32CubeIDE workspace metadata
+.metadata/
+
+# Generated build directories
+**/Debug/
+**/Release/
+
+# Compiled artifacts
+*.o
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+
+# Operating system files
+.DS_Store
+Thumbs.db
