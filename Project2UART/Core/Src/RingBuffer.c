@@ -14,6 +14,7 @@
  */
 
 uint8_t ringBuffer[128];
+const int RING_BUFFER_SIZE = 128;
 int headIdx; //idx of the head of the buffer
 int tailIdx; //idx of the tail of the buffer
 int size;
@@ -64,11 +65,16 @@ bool isBufferEmpty(){
 bool bufferPush(uint8_t* writeByte){
 	int futureTailIdx = tailIdx + 1;
 
+
+	if(futureTailIdx == RING_BUFFER_SIZE){
+		futureTailIdx = 0;
+	}
+
 	if(futureTailIdx == headIdx){
 		printf("Ring Buffer is full, wait to push more data");
 		return false;
 	}
-d
+	
 	ringBuffer[futureTailIdx] = *writeByte;
 
 	tailIdx = futureTailIdx;
