@@ -63,7 +63,7 @@ bool isBufferEmpty(){
 
 
 bool bufferPush(uint8_t* writeByte){
-	int futureTailIdx = tailIdx + 1;
+	int futureTailIdx = currTailIdx() + 1;
 
 
 	if(futureTailIdx == RING_BUFFER_SIZE){
@@ -74,9 +74,24 @@ bool bufferPush(uint8_t* writeByte){
 		printf("Ring Buffer is full, wait to push more data");
 		return false;
 	}
-	
+
 	ringBuffer[futureTailIdx] = *writeByte;
 
 	tailIdx = futureTailIdx;
 	return true;
+}
+
+
+uint8_t bufferPop(){
+	uint8_t popVal = peek();
+
+	int futureHeadIdx = currHeadIdx() + 1;
+
+	if(futureHeadIdx == RING_BUFFER_SIZE){
+		futureHeadIdx = 0;
+	}
+
+	headIdx = futureHeadIdx;
+
+	return popVal;
 }
