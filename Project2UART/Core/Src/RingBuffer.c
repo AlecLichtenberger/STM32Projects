@@ -50,21 +50,11 @@ uint8_t peek(){
 }
 
 bool isBufferEmpty(){
-	int bufSize = ringBufferSize();
-	for(int i = 0; i<bufSize; i++){
-		if(ringBuffer[i] != 0){
-			return false;
-		}
-	}
-
-	return true;
+	return headIdx == tailIdx;
 }
-
-
 
 bool bufferPush(uint8_t* writeByte){
 	int futureTailIdx = currTailIdx() + 1;
-
 
 	if(futureTailIdx == RING_BUFFER_SIZE){
 		futureTailIdx = 0;
@@ -75,14 +65,18 @@ bool bufferPush(uint8_t* writeByte){
 		return false;
 	}
 
-	ringBuffer[futureTailIdx] = *writeByte;
+	ringBuffer[tailIdx] = *writeByte;
 
 	tailIdx = futureTailIdx;
 	return true;
 }
 
-
+// Returns 0 if the buffer is empty
 uint8_t bufferPop(){
+	if(isBufferEmpty()){
+		return 0;
+	}
+
 	uint8_t popVal = peek();
 
 	int futureHeadIdx = currHeadIdx() + 1;
