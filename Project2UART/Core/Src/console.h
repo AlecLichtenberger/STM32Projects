@@ -9,7 +9,7 @@
 #define SRC_CONSOLE_H_
 
 #include <stdio.h>
-#include "ring_buffer.h"
+#include "RingBuffer.h"
 #include "main.h"
 
 #define BUFFER_SIZE 128

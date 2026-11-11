@@ -11,8 +11,8 @@
  * @param size size of the varw
  */
 
+#include "RingBuffer.h"
 
-const int RING_BUFFER_SIZE = 128;
 uint8_t ringBuffer[RING_BUFFER_SIZE];
 int headIdx; //idx of the head of the buffer
 int tailIdx; //idx of the tail of the buffer

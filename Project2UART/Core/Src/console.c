@@ -91,6 +91,37 @@ char* ConsoleProcessInput(){
 }
 
 
+void ConsoleBuildString(char* input){
+	if(input == NULL){
+		return;
+	}
+
+	char *cmd = strtok(input, " \t\n");
+
+	if(cmd == NULL){
+		return;
+	}
+
+
+	if(strcmp(cmd, "help") == 0){
+		printf("Available commands:\r\n");
+		printf("  help - Show this help message\r\n");
+		printf("  exit - Exit the terminal\r\n");
+		printf("  Hello - Say hello over serial\r\n");
+	}
+	else if(strcmp(cmd, "exit") == 0){
+		printf("Exiting terminal...\r\n");
+	}
+	else if(strcmp(cmd, "Hello") == 0){
+		printf("Hello over serial!\r\n");
+	}
+	else{
+		printf("Unknown command: %s\r\n", cmd);
+	}
+	printf("\r\n");
+}
+
+
 
 
 
