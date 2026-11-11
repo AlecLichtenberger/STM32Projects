@@ -4,17 +4,16 @@
  *  Created on: Oct 14, 2026
  *      Author: licht
  */
-#include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
+
 
 /**
  * Inits the ring buffer with specified size
  * @param size size of the varw
  */
 
-uint8_t ringBuffer[128];
+
 const int RING_BUFFER_SIZE = 128;
+uint8_t ringBuffer[RING_BUFFER_SIZE];
 int headIdx; //idx of the head of the buffer
 int tailIdx; //idx of the tail of the buffer
 int size;
